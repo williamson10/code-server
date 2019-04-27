@@ -47,7 +47,8 @@ RUN adduser --gecos '' --disabled-password coder && \
 # Install Jekyll
 RUN gem install jekyll 
 RUN gem install bundler -v '1.16.1'
-
+#RUN bundle config --global silence_root_warning 1
+#RUN bundle install
 
 USER coder
 # We create first instead of just using WORKDIR as when WORKDIR creates, the user is root.
@@ -62,6 +63,5 @@ VOLUME [ "/home/coder/project" ]
 
 COPY --from=0 /src/packages/server/cli-linux-x64 /usr/local/bin/code-server
 EXPOSE 8443
-EXPOSE 4000
 
-ENTRYPOINT ["dumb-init", "bundle install" "code-server"]
+ENTRYPOINT ["dumb-init", "code-server"]
