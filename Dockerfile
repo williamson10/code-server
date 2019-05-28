@@ -1,12 +1,12 @@
 FROM codercom/code-server:1.939
 
-
+USER root
 RUN apt-get update && apt-get install -y \
 	ruby-full \
 	build-essential \
 	zlib1g-dev
 
-
+USER coder
 # Install Jekyll
 RUN gem install jekyll 
 RUN gem install bundler -v '1.16.1'
