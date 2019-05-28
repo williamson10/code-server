@@ -6,13 +6,13 @@ RUN apt-get update && apt-get install -y \
 	build-essential \
 	zlib1g-dev
 
-USER coder
+
 # Install Jekyll
 RUN gem install jekyll 
 RUN gem install bundler -v '1.16.1'
 
 
-
+USER coder
 WORKDIR /home/coder/project
 
 
